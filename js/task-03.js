@@ -15,18 +15,23 @@ const images = [
 
 const listOfImagesRef = document.querySelector(".gallery");
 
-const makeListOfImages = (images) => {
-  return images.map(image => {
-    const addListItem = listOfImagesRef.insertAdjacentHTML('afterbegin', '<li><img></li>');
-    const imageListItem = document.querySelector('.gallery li img');
-    imageListItem.src = image.url;
-    imageListItem.alt = image.alt;
+const imagesGallery = images.map(({ url, alt }) => {
+    return `<li><img alt='${alt}'; src='${url}';></li>`;
+}).join(" ");
+listOfImagesRef.insertAdjacentHTML('afterbegin', ` ${imagesGallery}`);
 
-    return addListItem;
-  });
-};
+// const makeListOfImages = (images) => {
+//   return images.map(image => {
+//     const addListItem = listOfImagesRef.insertAdjacentHTML('afterbegin', '<li><img></li>');
+//     const imageListItem = document.querySelector('.gallery li img');
+//     imageListItem.src = image.url;
+//     imageListItem.alt = image.alt;
 
-makeListOfImages(images);
+//     return addListItem;
+//   });
+// };
+
+// makeListOfImages(images);
 
 // images.forEach(element => {
 //   listOfImagesRef.insertAdjacentHTML('afterbegin', '<li><img></li>');
@@ -34,3 +39,5 @@ makeListOfImages(images);
 //   imageListItem.src = element.url;
 //   imageListItem.alt = element.alt;
 // });
+
+
